@@ -1,7 +1,6 @@
 from typing import override
 
 from stepps.nodes import BinaryNode
-from stepps.trees.binary_tree import BinaryTree
 from stepps.visualizer.cli_visualizer import CliTreeVisualizer
 
 

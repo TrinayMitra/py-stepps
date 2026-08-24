@@ -6,7 +6,7 @@ from stepps.iterators import (
     PostOrderIterator,
     PreOrderIterator,
 )
-from stepps.trees import BSTImpl
+from stepps.trees.bst_impl import BSTImpl
 
 
 @pytest.fixture

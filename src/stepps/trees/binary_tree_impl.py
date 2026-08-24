@@ -1,6 +1,8 @@
 from collections import deque
+from collections.abc import Callable
 from typing import override
 
+from stepps.iterators.base_iterator import BinaryTreeIterator
 from stepps.nodes import BinaryNode
 from stepps.trees.binary_tree import BinaryTree
 
@@ -10,12 +12,17 @@ class BinaryTreeImpl[T](BinaryTree[T]):
     Provide the default implementation of a binary tree.
     """
 
-    def __init__(self) -> None:
-        """
-        Initialize an empty binary tree.
-        """
+    def __init__(
+        self,
+        find_search_iter: Callable[
+            [BinaryNode[T] | None],
+            BinaryTreeIterator[BinaryNode[T]],
+        ]
+        | None = None,
+    ) -> None:
         self.root: BinaryNode[T] | None = None
         self._size = 0
+        self._find_search_iter = find_search_iter
 
     def is_empty(self) -> bool:
         """
@@ -48,22 +55,14 @@ class BinaryTreeImpl[T](BinaryTree[T]):
         :param value: The value to search for.
         :return: The matching node, or ``None`` if the value is not found.
         """
-        if self.root is None:
+        if self._find_search_iter is None:
             return None
 
-        queue: deque[BinaryNode[T]] = deque([self.root])
+        iterator = self._find_search_iter(self.root)
 
-        while queue:
-            node = queue.popleft()
-
+        for node in iterator:
             if node.value == value:
                 return node
-
-            if node.left is not None:
-                queue.append(node.left)
-
-            if node.right is not None:
-                queue.append(node.right)
 
         return None
 

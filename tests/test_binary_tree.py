@@ -1,7 +1,8 @@
 import pytest
 
+from stepps.iterators.levelorder import LevelOrderIterator
 from stepps.nodes import BinaryNode
-from stepps.trees import BinaryTreeImpl
+from stepps.trees.binary_tree_impl import BinaryTreeImpl
 
 
 class ConcreteBinaryTree(BinaryTreeImpl[int]):
@@ -21,7 +22,7 @@ class ConcreteBinaryTree(BinaryTreeImpl[int]):
 
 @pytest.fixture
 def tree():
-    tree = ConcreteBinaryTree()
+    tree = ConcreteBinaryTree(LevelOrderIterator)
 
     root = BinaryNode(50)
     root.left = BinaryNode(30)
@@ -43,7 +44,7 @@ def tree():
 
 
 def test_new_tree_is_empty():
-    tree = ConcreteBinaryTree()
+    tree = ConcreteBinaryTree(LevelOrderIterator)
 
     assert tree.is_empty()
     assert len(tree) == 0
@@ -99,7 +100,7 @@ def test_height(tree):
 
 
 def test_empty_tree_height():
-    tree = ConcreteBinaryTree()
+    tree = ConcreteBinaryTree(LevelOrderIterator)
 
     assert tree.height() == -1
 
@@ -109,7 +110,7 @@ def test_leaf_count(tree):
 
 
 def test_empty_tree_leaf_count():
-    tree = ConcreteBinaryTree()
+    tree = ConcreteBinaryTree(LevelOrderIterator)
 
     assert tree.count_leaves() == 0
 
@@ -119,7 +120,7 @@ def test_internal_nodes(tree):
 
 
 def test_empty_tree_internal_nodes():
-    tree = ConcreteBinaryTree()
+    tree = ConcreteBinaryTree(LevelOrderIterator)
 
     assert tree.count_internal_nodes() == 0
 
@@ -155,7 +156,7 @@ def test_invert_tree(tree):
 
 
 def test_invert_empty_tree():
-    tree = ConcreteBinaryTree()
+    tree = ConcreteBinaryTree(LevelOrderIterator)
 
     tree.invert_tree()
 
@@ -163,7 +164,7 @@ def test_invert_empty_tree():
 
 
 def test_invert_single_node_tree():
-    tree = ConcreteBinaryTree()
+    tree = ConcreteBinaryTree(LevelOrderIterator)
 
     tree.root = BinaryNode(50)
     tree._size = 1
