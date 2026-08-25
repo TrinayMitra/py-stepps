@@ -1,26 +1,54 @@
-[build-system]
-requires = ["setuptools>=75"]
-build-backend = "setuptools.build_meta"
-
-
 [project]
 name = "stepps"
-version = "0.1.0"
-description = "Data structures and algorithms implemented in Python"
+version = "0.0.0.dev0"
+description = "Useful algorithms in Python"
 requires-python = ">=3.12"
+readme = "README.md"
+authors = [
+    {name = "Suhas Krishna Srivastava", email = "suhas.srivastava@vaastav.tech"},
+    {name = "Trinay Mitra", email = "trinay.mitra@vaastav.tech"}
+]
+maintainers = [
+    {name = "Suhas Krishna Srivastava", email = "suhas.srivastava@vaastav.tech"}
+]
+license = "Apache-2.0"
+keywords = [
+  "algorithms", "data-structures", "data-structures-and-algorithms", "dsa"
+]
+classifiers = [
+  "Development Status :: 1 - Planning",
 
+  "Intended Audience :: Developers",
+  "Intended Audience :: Education",
+
+  "Topic :: Education",
+  "Topic :: Software Development",
+  "Topic :: Software Development :: Libraries",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+
+  "Operating System :: OS Independent",
+
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Programming Language :: Python :: 3.15",
+  "Programming Language :: Python :: 3 :: Only",
+
+  "Typing :: Typed"
+]
+dependencies = []
+
+[dependency-groups]
+dev = ["mypy", "ruff"]
+doc = ['sphinx', 'sphinx-argparse']
+test = ["pytest", 'pytest-cov', "pytest-xdist"]
+multitest = ['tox']
+
+
+[project.urls]
+homepage = "https://github.com/Vaastav-Technologies/py-algor"
+source = "https://github.com/Vaastav-Technologies/py-algor"
+issues = "https://github.com/Vaastav-Technologies/py-algor/issues"
 
 [tool.setuptools.packages.find]
-where = ["src"]
-
-
-[tool.ruff]
-line-length = 88
-
-
-[tool.mypy]
-python_version = "3.12"
-
-
-[tool.pytest.ini_options]
-testpaths = ["tests"]
+where = ['src']
