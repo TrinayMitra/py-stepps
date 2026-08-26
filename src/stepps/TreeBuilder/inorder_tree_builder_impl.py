@@ -35,6 +35,7 @@ class InOrderTreeBuilderImpl[T](InOrderTreeBuilder[T]):
         :param left: The start index of the current range.
         :param right: The end index of the current range.
         :return: The root node of the constructed subtree.
+        :complexity: O(n) space complexity, including the constructed tree.
         """
         if left > right:
             return None
